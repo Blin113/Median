@@ -1,0 +1,36 @@
+using System;
+
+class MainClass{
+    public static void Main(string[] args){
+      Console.WriteLine("How many variables do you have?: ");
+      int amount = int.Parse(Console.ReadLine());
+      if(amount == 0){
+        Main(null);
+      }
+      double[] Temp = new double[amount];        
+      
+      Console.WriteLine("Please write your variables here");
+      for(int i = 0; i < amount; i++){
+        Temp[i] = int.Parse(Console.ReadLine());
+      }
+
+        Console.WriteLine("Median: " + Median(Temp));
+
+        Console.WriteLine("Restart?: ");
+
+        string rst = Console.ReadLine().ToLower();
+        if(!rst.StartsWith("n")){
+          Main(null);
+        }
+    }
+
+    public static double Median(double[] Temp){
+      Array.Sort(Temp);
+      if (Temp.Length%2==0){
+        return (Temp[Temp.Length/2] + Temp[(Temp.Length/2)-1]) / 2;
+      }
+      else{
+        return Temp[Temp.Length/2];
+      }
+    }
+}
